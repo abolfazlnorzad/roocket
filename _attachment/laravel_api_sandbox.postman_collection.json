@@ -1,0 +1,790 @@
+{
+	"info": {
+		"_postman_id": "85d53e7f-1076-4feb-80f3-8eee24a1041b",
+		"name": "laravel_api_sandbox",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "create category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "{{$randomNoun}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/category",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"category"
+							]
+						},
+						"description": "ایجاد دسته بندی جدید برای پستت ها\n\n(ادمین میتواند دسته بندی جدید ایجاد کند)\n\n`roocket.test/api/yourVersion/category`\n\nbody(form-data):\n\n``` plaintext\nname => required ring | maxLen:255 | minLen:3,\n\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "show category",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/v1/category/3",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"category",
+								"3"
+							]
+						},
+						"description": "مشاهده مشخصات یک دسته بندی + پست هایی که این دسته بندی را دارند\n\n`roocket.test/api/yourVersion/category/categoryId`"
+					},
+					"response": []
+				},
+				{
+					"name": "list category - pagination",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/v1/category",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"category"
+							]
+						},
+						"description": "مشاهده لیست تمامی دسته بندی\n\n`roocket.test/api/yourVersion/category`"
+					},
+					"response": []
+				},
+				{
+					"name": "edit category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "{{$randomNoun}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/category/8",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"category",
+								"8"
+							]
+						},
+						"description": "ویرایش دسته بندی\n\n(ادمین میتواند دسته بندی را ویرایش کند)\n\n`roocket.test/api/yourVersion/category/categoryId`\n\nbody(form-data):\n\n``` markdown\nname => required ring | maxLen:255 | minLen:3,\n\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "delete category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/v1/category/6",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"category",
+								"6"
+							]
+						},
+						"description": "حذف دسته بندی\n\n(ادمین میتواند دسته بندی را حذف کند)\n\n`roocket.test/api/yourVersion/category/categoryId`"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "create post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "{{$randomNoun}}",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "{{$randomLoremLines}}",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/user/Pictures/images.png"
+								},
+								{
+									"key": "categories[]",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "categories[]",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "categories[]",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/post",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"post"
+							]
+						},
+						"description": "ایجاد پست جدید\n\n(ادمین میتواند پست جدیدی ایجاد کند)\n\n`roocket.test/api/yourVersion/post`\n\nbody(form-data):\n\n``` plaintext\ntitle => required | string | maxLen:255 | minLen:3,\ndescription => required | min:3 | string ,\nimage => nullable | image | maxSize:2048(2mb),\ncategories => array| nullable,\ncategories.item =>categortId\n\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "show post",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/v1/post/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"post",
+								"1"
+							]
+						},
+						"description": "مشاهده ی پست به همراه تعداد لایک+تعداد کامنت+دسته بندی +کامنت ها\n\n`roocket.test/api/yourVersion/post/postId`"
+					},
+					"response": []
+				},
+				{
+					"name": "list posts - pagination",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/v1/post",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"post"
+							]
+						},
+						"description": "مشاهده ی لیست پست ها به همراه تعداد لایک+تعداد کامنت+دسته بندی هر پست\n\n`roocket.test/api/yourVersion/post`"
+					},
+					"response": []
+				},
+				{
+					"name": "edit post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "{{$randomNoun}}",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "{{$randomLoremLines}}",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/user/Pictures/logo.png"
+								},
+								{
+									"key": "categories[]",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/post/1?_method=PUT",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"post",
+								"1"
+							],
+							"query": [
+								{
+									"key": "_method",
+									"value": "PUT"
+								}
+							]
+						},
+						"description": "### نکته : دلیل استفاده از متد پست برای عملیات ویرایش، ارسال فایل هست !\n\nویرایش پست\n\n(ادمین میتواند پست ویرایش کند)\n\n`roocket.test/api/yourVersion/post/postId?_method=PUT`\n\nbody(form-data):\n\n``` plaintext\ntitle => required | string | maxLen:255 | minLen:3,\ndescription => required | min:3 | string ,\nimage => nullable | image | maxSize:2048(2mb),\ncategories => array| nullable,\ncategories.item =>categortId\n\n```\n\nparams :\n\n```\n_method =>PUT\n\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "delete post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/v1/post/2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"post",
+								"2"
+							]
+						},
+						"description": "حذف یک پست\n\n`roocket.test/api/yourVersion/post/postId`"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "create new CM",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "message",
+									"value": "{{$randomLoremSentence}}",
+									"type": "text"
+								},
+								{
+									"key": "commentable_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "commentable_type",
+									"value": "Nrz\\Post\\Models\\Post",
+									"type": "text"
+								},
+								{
+									"key": "parent_id",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/send-comment",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"send-comment"
+							]
+						},
+						"description": "ثبت کامنت برای یک پست یا پاسخ به یک کامنت\n\n`roocket.test/api/yourVersion/send-comment`\n\nbody(form-data):\n\n``` markdown\nmessage => required | string | min:3 ,\nparent_id => nullable , // Enter the parent comment ID to reply to a comment, otherwise skip this field\ncommentable_type => required,  // To create comments for posts = Nrz\\Post\\Models\\Post\ncommentable_id => 'required  // To create comments for posts = postId\n\n```"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Like",
+			"item": [
+				{
+					"name": "like post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "post_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/like-post",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"like-post"
+							]
+						},
+						"description": "لایک/دیس لایک کردن یک پست\n\n`roocket.test/api/yourVersion/like-post`\n\nbody(form-data):\n\n```\npost_id => required\n\n```"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "{{$randomNoun}}",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "{{$randomEmail}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"register"
+							]
+						},
+						"description": "ثبت نام کاربر جدید\n\n`roocket.test/api/yourVersion/register`\n\nbody(form-data):\n\n```\nname => required | string | max:255 ,\nemail => required | string | email | max:255 ,\npassword => required | string | min:8 | confirmed\n\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "abol@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						},
+						"description": "ورود به حساب کاربری\n\n`roocket.test/api/yourVersion/login`\n\nbody(form-data):\n\n```\nemail => required | string | email | max:255,\npassword => required | string | min:8,\n\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/v1/logout",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"logout"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						},
+						"description": "خروج از حساب کاربری\n\n`roocket.test/api/yourVersion/logout`"
+					},
+					"response": []
+				},
+				{
+					"name": "send reset password link",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "abol@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/forgot-password",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"forgot-password"
+							]
+						},
+						"description": "ارسال ایمیل بازیابی رمز عبور\n\n`roocket.test/api/yourVersion/forgot-password      `\n\nbody(form-data):\n\n```\nemail => required | email \n\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "reset password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "password",
+									"value": "123456789",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "123456789",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/reset-password?token=132358f29daa096948ddf404bfbddcf5ffca064e2907a7aaa6760344f8ba1029&email=Katherine_Nikolaus19@gmail.com",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"reset-password"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "132358f29daa096948ddf404bfbddcf5ffca064e2907a7aaa6760344f8ba1029"
+								},
+								{
+									"key": "email",
+									"value": "Katherine_Nikolaus19@gmail.com"
+								}
+							]
+						},
+						"description": "اپدیت رمز عبور\n\n`roocket.test/api/yourVersion/reset-password?token=yourToken&email=yourEmail@gmail.com`\n\nbody(form-data):\n\n```\npassword => required | string | min:8 | confirmed\n\n```\n\nparams :\n\n```\ntoken => required\nemail => required | email\n```"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "roocket.test/api"
+		},
+		{
+			"key": "authToken",
+			"value": "2|OcKPu5eQ7vHrSHVukD8MNlprCmUIGDPzzQwVsw24"
+		}
+	]
+}

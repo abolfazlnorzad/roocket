@@ -1,0 +1,15 @@
+{
+    "name": "nrz/post",
+    "autoload": {
+        "psr-4": {
+            "Nrz\\Post\\" : "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "\\Nrz\\Post\\Providers\\PostServiceProvider"
+            ]
+        }
+    }
+}

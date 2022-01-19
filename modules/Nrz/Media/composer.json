@@ -1,0 +1,15 @@
+{
+    "name": "nrz/media",
+    "autoload": {
+        "psr-4": {
+            "Nrz\\Media\\" : "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "\\Nrz\\Media\\Providers\\MediaServiceProvider"
+            ]
+        }
+    }
+}

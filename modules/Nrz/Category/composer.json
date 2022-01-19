@@ -1,0 +1,15 @@
+{
+    "name": "nrz/category",
+    "autoload": {
+        "psr-4": {
+            "Nrz\\Category\\" : "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "\\Nrz\\Category\\Providers\\CategoryServiceProvider"
+            ]
+        }
+    }
+}
